@@ -1,6 +1,6 @@
 [Unit]
 Description=Monitor your PC
-Requires=/var/run/docker.sock
+Requires=/usr/lib/systemd/system/docker.socket
 AssertPathExists=$WORKDIR
 
 [Service]
@@ -11,4 +11,4 @@ ExecStart=$DOCKER_COMPOSE_PATH up --remove-orphans
 ExecStop=$DOCKER_COMPOSE_PATH down
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

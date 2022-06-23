@@ -1,6 +1,7 @@
 scrape_configs:
 - job_name: nodeexporter
-  scrape_interval: 2s
+  scrape_interval: 15s
   static_configs:
   - targets:
     - $NODE_EXPORTER_TARGET:9100
+    - dcgm_exporter:9400

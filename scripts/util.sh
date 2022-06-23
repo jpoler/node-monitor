@@ -24,6 +24,9 @@ function setup_monitoring_stack() {
   cp ./scripts/assets/docker-compose.yaml "${monitoring_data_dir}"
 
   # Install the dashboard
+  curl -sL -o "${monitoring_data_dir}"/dcgm-exporter.json.tmp https://grafana.com/api/dashboards/12239/revisions/2/download
+  ./scripts/add_grafana_data_source_to_dashboard < "${monitoring_data_dir}"/dcgm-exporter.json.tmp \
+                                         > "${monitoring_data_dir}"/dcgm-exporter.json
   curl -sL -o "${monitoring_data_dir}"/node-exporter.json https://grafana.com/api/dashboards/1860/revisions/22/download
   cp ./scripts/assets/dashboard-definition.yaml "${monitoring_data_dir}"
 }

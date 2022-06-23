@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+import json
+import sys
+
+ds_prometheus_variable = {
+    "current": {
+        "selected": False,
+        "text": "default",
+        "value": "default"
+    },
+    "hide": 0,
+    "includeAll": False,
+    "label": "datasource",
+    "multi": False,
+    "name": "DS_PROMETHEUS",
+    "options": [],
+    "query": "prometheus",
+    "refresh": 1,
+    "regex": "",
+    "skipUrlSync": False,
+    "type": "datasource"
+}
+
+dashboard_json = json.load(sys.stdin)
+dashboard_json["templating"]["list"].insert(0, ds_prometheus_variable)
+json.dump(dashboard_json, sys.stdout)

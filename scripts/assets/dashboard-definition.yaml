@@ -6,3 +6,8 @@ providers:
   type: file
   options:
     path: /tmp/node-exporter.json
+- name: DCGMExporter
+  folder: DCGMExporter
+  type: file
+  options:
+    path: /tmp/dcgm-exporter.json
